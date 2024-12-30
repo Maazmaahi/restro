@@ -1,0 +1,13 @@
+export 'dashboard/dashboard_screen.dart';
+export 'favourite/favourite_screen.dart';
+export 'home/home_screen.dart';
+export 'locations/location_screen.dart';
+export 'login/login_screen.dart';
+export 'notifications/notifications_screen.dart';
+export 'offers/offers_screen.dart';
+export 'otp/otp_screen.dart';
+export 'profile/profile_screen.dart';
+export 'recharge/recharge_screen.dart';
+export 'register/register_screen.dart';
+export 'search/search_screen.dart';
+export 'splash/splash_screen.dart';
