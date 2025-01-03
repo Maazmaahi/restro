@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:restro/src/core/core.dart';
+import 'package:restro/src/cores/cores.dart';
 import 'package:restro/src/routes/routes.dart';
 
 class SplashScreen extends StatefulWidget {

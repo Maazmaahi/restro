@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:restro/src/core/core.dart';
+import 'package:restro/src/cores/cores.dart';
 import 'package:restro/src/routes/routes.dart';
 import 'package:restro/src/widgets/widgets.dart';
 
@@ -16,25 +16,33 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(50),
-          child: CustomAppBar(
-            leftButton: CustomAppBarLeftButtons.hamburger,
-            title: "Restro",
-          ),
-        ),
+        // appBar: const PreferredSize(
+        //   preferredSize: Size.fromHeight(50),
+        //   child: CustomAppBar(
+        //     leftButton: CustomAppBarLeftButtons.none,
+        //     title: "Restro",
+        //   ),
+        // ),
         body: child,
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(
+            elevation: 40,
+            surfaceTintColor: AppColors.primary,
+            shadowColor: AppColors.shadowColor,
             labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
               (Set<WidgetState> states) => states.contains(WidgetState.selected)
-                  ? const TextStyle(color: Colors.red)
+                  ? TextStyle(color: AppColors.primary)
                   : const TextStyle(color: Colors.black),
             ),
+            iconTheme: WidgetStateProperty.resolveWith(
+                (Set<WidgetState> states) =>
+                    states.contains(WidgetState.selected)
+                        ? IconThemeData(color: AppColors.primary)
+                        : const IconThemeData(color: AppColors.steelBlue)),
             indicatorColor: AppColors.primary,
           ),
           child: NavigationBar(
-            backgroundColor: Colors.white,
+            backgroundColor: AppColors.white,
             selectedIndex: _calculateSelectedIndex(context),
             onDestinationSelected: (int? index) => _onTap(context, index ?? 0),
             destinations: _navigationItems,
@@ -55,15 +63,15 @@ class DashboardScreen extends StatelessWidget {
     ),
     NavigationDestination(
       icon: Icon(Icons.favorite_border_outlined, color: Colors.black),
-      label: "Explore",
+      label: "Favourite",
     ),
     NavigationDestination(
       icon: Icon(Icons.offline_bolt_outlined, color: Colors.black),
-      label: "jew. Plans",
+      label: "Offers",
     ),
     NavigationDestination(
       icon: Icon(Icons.person_outline, color: Colors.black),
-      label: "Contact Us",
+      label: "Profile",
     ),
   ];
 

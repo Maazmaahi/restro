@@ -2,6 +2,8 @@ part of 'routes.dart';
 
 class RoutesName {
   static const String dashboard = '/dashboard';
+  static const String dishDetails = '/dish_details';
+  static const String exploreMenu = '/explore_menu';
   static const String favourite = '/favourite';
   static const String home = '/home';
   static const String location = '/location';

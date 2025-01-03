@@ -17,9 +17,9 @@ class AppOutlinedButton extends StatelessWidget {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         side: BorderSide(color: AppColors.primary),
-        // backgroundColor: AppColors.red300,
-        foregroundColor: AppColors.white,
-        minimumSize: const Size(150, 40),
+        // backgroundColor: AppColors.primary,
+        foregroundColor: AppColors.primary,
+        minimumSize: const Size(120, 40),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),

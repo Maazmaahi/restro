@@ -1,4 +1,6 @@
 export 'dashboard/dashboard_screen.dart';
+export 'dish_details/dish_details.dart';
+export 'explore_menu/explore_menu_screen.dart';
 export 'favourite/favourite_screen.dart';
 export 'home/home_screen.dart';
 export 'locations/location_screen.dart';

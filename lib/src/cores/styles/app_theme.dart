@@ -1,4 +1,4 @@
-part of './core.dart';
+part of '../cores.dart';
 
 class AppTheme {
   static final ThemeData lightTheme = ThemeData(

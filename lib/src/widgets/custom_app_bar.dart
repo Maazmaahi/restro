@@ -5,6 +5,7 @@ enum CustomAppBarLeftButtons {
   cross,
   menu,
   hamburger,
+  appLogo,
   none,
 }
 
@@ -102,6 +103,13 @@ class CustomAppBar extends StatelessWidget {
 
   Widget _buildLeftIconButton(context) {
     switch (leftButton) {
+      case CustomAppBarLeftButtons.appLogo:
+        return IconButton(
+          icon: Image.asset(Assets.images.biryaniMahalLogo),
+          onPressed: () {
+            // Navigator.of(context).pop();
+          },
+        );
       case CustomAppBarLeftButtons.back:
         return IconButton(
           icon: Icon(

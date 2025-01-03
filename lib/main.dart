@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:restro/src/app.dart';
+import 'package:restro/src/cores/cores.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await LocalStorageManager.init();
   runApp(const MyApp());
 }

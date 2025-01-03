@@ -1,4 +1,4 @@
-part of 'core.dart';
+part of '../cores.dart';
 
 class LocalStorageManager {
   static SharedPreferences? _prefs;

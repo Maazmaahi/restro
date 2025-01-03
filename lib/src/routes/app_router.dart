@@ -39,6 +39,30 @@ class AppRouter {
       //   },
       // ),
       GoRoute(
+        name: RoutesName.dishDetails,
+        path: RoutesName.dishDetails,
+        builder: (BuildContext context, GoRouterState state) {
+          // final DishModel dish = state.extra! as DishModel;
+
+          final Map<String, dynamic> extra =
+              state.extra! as Map<String, dynamic>;
+          final DishModel dish = extra['dish'] as DishModel;
+          final bool showOtherDishesMayLike =
+              extra['showOtherDishesMayLike'] as bool;
+          return DishDetailsScreen(
+            dish: dish,
+            showOtherDishesMayLike: showOtherDishesMayLike,
+          );
+        },
+      ),
+      GoRoute(
+        name: RoutesName.exploreMenu,
+        path: RoutesName.exploreMenu,
+        builder: (BuildContext context, GoRouterState state) {
+          return const ExploreMenuScreen();
+        },
+      ),
+      GoRoute(
         name: RoutesName.location,
         path: RoutesName.location,
         builder: (BuildContext context, GoRouterState state) {
