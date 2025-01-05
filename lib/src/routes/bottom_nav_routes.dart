@@ -18,21 +18,6 @@ class BottomNavRoutes {
       },
     ),
     GoRoute(
-      name: RoutesName.recharge,
-      path: RoutesName.recharge,
-      pageBuilder: (_, state) {
-        return CustomTransitionPage<void>(
-          key: state.pageKey,
-          transitionDuration: kThemeAnimationDuration,
-          reverseTransitionDuration: kThemeAnimationDuration,
-          child: const RechargeScreen(),
-          transitionsBuilder: (_, animation, __, child) {
-            return FadeTransition(opacity: animation, child: child);
-          },
-        );
-      },
-    ),
-    GoRoute(
       name: RoutesName.favourite,
       path: RoutesName.favourite,
       pageBuilder: (_, state) {
@@ -56,6 +41,21 @@ class BottomNavRoutes {
           transitionDuration: kThemeAnimationDuration,
           reverseTransitionDuration: kThemeAnimationDuration,
           child: const OfferScreen(),
+          transitionsBuilder: (_, animation, __, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+        );
+      },
+    ),
+    GoRoute(
+      name: RoutesName.cart,
+      path: RoutesName.cart,
+      pageBuilder: (_, state) {
+        return CustomTransitionPage<void>(
+          key: state.pageKey,
+          transitionDuration: kThemeAnimationDuration,
+          reverseTransitionDuration: kThemeAnimationDuration,
+          child: const CartScreen(),
           transitionsBuilder: (_, animation, __, child) {
             return FadeTransition(opacity: animation, child: child);
           },

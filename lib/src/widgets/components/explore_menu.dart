@@ -9,6 +9,8 @@ class ExploreMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
+    final colorScheme = context.theme.colorScheme;
+
     return SizedBox(
       height: 100,
       child: ListView.separated(
@@ -28,7 +30,7 @@ class ExploreMenu extends StatelessWidget {
               homeProvider.getFilterDishes();
             },
             child: index == 0
-                ?  Column(
+                ? Column(
                     children: [
                       CircleAvatar(
                         backgroundColor: homeProvider.dishIndex == index
@@ -37,12 +39,14 @@ class ExploreMenu extends StatelessWidget {
                         maxRadius: 35,
                         child: const Text("BM"),
                       ),
-                      Text("All",
+                      Text(
+                        "All",
                         style: TextStyle(
-                        color: homeProvider.dishIndex == index
-                        ? AppColors.primary
-                        : AppColors.black,
-                      ),)
+                          color: homeProvider.dishIndex == index
+                              ? colorScheme.primary
+                              : colorScheme.onSurface,
+                        ),
+                      )
                     ],
                   )
                 : Column(
@@ -63,7 +67,7 @@ class ExploreMenu extends StatelessWidget {
                               borderRadius: BorderRadius.circular(25),
                               border: Border.all(
                                 color: homeProvider.dishIndex == index
-                                    ? AppColors.primary
+                                    ? colorScheme.primary
                                     : Colors.transparent,
                                 width: 4,
                               )),
@@ -73,12 +77,14 @@ class ExploreMenu extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Text(item.name,
-                      style: TextStyle(
-                        color: homeProvider.dishIndex == index
-                            ? AppColors.primary
-                            : AppColors.black,
-                      ),)
+                      Text(
+                        item.name,
+                        style: TextStyle(
+                          color: homeProvider.dishIndex == index
+                              ? colorScheme.primary
+                              : colorScheme.onSurface,
+                        ),
+                      )
                     ],
                   ),
           );

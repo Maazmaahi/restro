@@ -9,6 +9,7 @@ class HorizontalFoodCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final favouriteProvider = Provider.of<FavouriteProvider>(context);
+    final colorScheme = context.theme.colorScheme;
     return InkWell(
       onTap: onTap,
       child: Stack(
@@ -17,10 +18,10 @@ class HorizontalFoodCard extends StatelessWidget {
             height: 110,
             child: DecoratedBox(
               decoration: BoxDecoration(
-                color: AppColors.white,
+                color: colorScheme.surface,
                 borderRadius: BorderRadius.circular(5),
                 boxShadow: [
-                  BoxShadow(color: AppColors.shadowColor, blurRadius: 4)
+                  BoxShadow(color: colorScheme.shadow, blurRadius: 4)
                 ],
               ),
               child: Row(
@@ -58,7 +59,7 @@ class HorizontalFoodCard extends StatelessWidget {
                               favouriteProvider.favouriteDishes.contains(item)
                                   ? Icons.favorite
                                   : Icons.favorite_border_outlined,
-                              color: AppColors.white,
+                              color: colorScheme.primary,
                               size: 20,
                             )),
                       ),
@@ -132,7 +133,7 @@ class HorizontalFoodCard extends StatelessWidget {
             Container(
               height: 110,
               decoration: BoxDecoration(
-                color: AppColors.black.withOpacity(0.25),
+                color: colorScheme.shadow.withOpacity(0.25),
                 borderRadius: BorderRadius.circular(5),
               ),
             ),

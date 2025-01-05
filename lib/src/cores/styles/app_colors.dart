@@ -17,5 +17,6 @@ class AppColors {
   static const teal = Colors.teal;
   static Color lightBackGroundColor = Colors.white;
   static Color darkBackGroundColor = Colors.black;
-  static Color shadowColor = Colors.black.withOpacity(0.2);
+  static Color lightShadowColor = Colors.black.withOpacity(0.2);
+  static Color darkShadowColor = Colors.white.withOpacity(0.4);
 }

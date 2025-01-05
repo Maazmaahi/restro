@@ -17,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late HomeProvider homeProvider = HomeProvider();
+  late AuthProvider authProvider = AuthProvider();
 
   @override
   void initState() {
@@ -31,18 +32,23 @@ class _HomeScreenState extends State<HomeScreen> {
     await homeProvider.getExplore();
     await homeProvider.getDishes();
     await homeProvider.getMayLikeDishes();
+    await authProvider.getLanguages();
+    await authProvider.getThemes();
   }
 
   @override
   Widget build(BuildContext context) {
     homeProvider = Provider.of<HomeProvider>(context);
+    authProvider = Provider.of<AuthProvider>(context);
+    final translate = context.translate;
 
     return Scaffold(
-      appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(50),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50),
         child: CustomAppBar(
           leftButton: CustomAppBarLeftButtons.appLogo,
-          title: "Biryani Mahal,Patna",
+          title: "${translate?.biryaniMahal ?? "Biryani Mahal"}, ${translate?.patna ?? "Patna"}",
+          color: Theme.of(context).colorScheme.surface,
         ),
       ),
       // appBar: PreferredSize(
@@ -103,9 +109,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          "Explore Menu",
-                          style: TextStyle(
+                        Text(
+                          translate?.exploreMenu ?? "Explore Menu",
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
                           ),
@@ -117,9 +123,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     const SizedBox(height: 20),
-                    const Text(
-                      "Deals of The Day",
-                      style: TextStyle(
+                    Text(
+                      translate?.dealsOfTheDay ?? "Deals of The Day",
+                      style: const TextStyle(
                         fontSize: 18,
                         color: AppColors.red,
                         fontWeight: FontWeight.w500,
@@ -128,9 +134,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(height: 20),
                     const DealsCarousel(),
                     const SizedBox(height: 20),
-                    const Text(
-                      "Offers",
-                      style: TextStyle(
+                    Text(
+                      translate?.offers ?? "Offers",
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
                       ),
@@ -138,9 +144,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(height: 20),
                     const OfferCarousel(),
                     const SizedBox(height: 20),
-                    const Text(
-                      "Best Sellers",
-                      style: TextStyle(
+                    Text(
+                      translate?.bestSellers ?? "Best Sellers",
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
                       ),

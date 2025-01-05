@@ -1,6 +1,9 @@
 part of '../cores.dart';
 
 class LocalStorageManager {
+  static const String appLanguage = "appLanguage";
+  static const String isLoggedIn = "isLoggedIn";
+  static const String themeMode = "themeMode";
   static SharedPreferences? _prefs;
 
   // call this method from iniState() function of mainApp().
@@ -8,6 +11,9 @@ class LocalStorageManager {
     _prefs = await SharedPreferences.getInstance();
     return _prefs;
   }
+
+  set setAppLanguage(LanguageModel language) =>
+      _prefs?.setString(appLanguage, jsonEncode(language));
 
   static Future<bool> setBool(String key, bool value) async =>
       await _prefs?.setBool(key, value) ?? false;
@@ -25,6 +31,17 @@ class LocalStorageManager {
       await _prefs?.setStringList(key, value) ?? false;
 
   //gets
+
+  static LanguageModel get getAppLanguage {
+    LanguageModel language;
+
+    Map<String, dynamic> obj =
+        jsonDecode(_prefs?.getString(appLanguage) ?? "");
+    language = LanguageModel.fromJson(obj);
+
+    return language;
+  }
+
   static bool getBool(String key) => _prefs?.getBool(key) ?? false;
 
   static double getDouble(String key) => _prefs?.getDouble(key) ?? 0;

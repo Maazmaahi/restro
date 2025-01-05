@@ -2,19 +2,11 @@ part of 'widgets.dart';
 
 enum CustomAppBarLeftButtons {
   back,
+  chevronBack,
   cross,
   menu,
   hamburger,
   appLogo,
-  none,
-}
-
-enum CustomAppBarRightButtons {
-  storeLocator,
-  wishlist,
-  cart,
-  notification,
-  share,
   none,
 }
 
@@ -29,7 +21,6 @@ class CustomAppBar extends StatelessWidget {
   final double bottomOpacity;
   final bool visibleAppBar;
   final List<Widget>? actions;
-  final List<CustomAppBarRightButtons>? rightButtons;
 
   const CustomAppBar({
     super.key,
@@ -37,7 +28,6 @@ class CustomAppBar extends StatelessWidget {
     this.title,
     this.color = Colors.white,
     this.actions,
-    this.rightButtons,
     this.isShowDivider = false,
     this.isSpacer = false,
     this.bottom,
@@ -108,6 +98,16 @@ class CustomAppBar extends StatelessWidget {
           icon: Image.asset(Assets.images.biryaniMahalLogo),
           onPressed: () {
             // Navigator.of(context).pop();
+          },
+        );
+      case CustomAppBarLeftButtons.chevronBack:
+        return IconButton(
+          icon: Icon(
+            Icons.chevron_left,
+            color: AppColors.primary,
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
           },
         );
       case CustomAppBarLeftButtons.back:

@@ -3,17 +3,17 @@ import 'package:restro/src/cores/cores.dart';
 
 import '../../widgets/widgets.dart';
 
-class NotificationsScreen extends StatelessWidget {
-  const NotificationsScreen({super.key});
+class AddressScreen extends StatelessWidget {
+  const AddressScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final translate = context.translate;
     return AppScaffold(
       leftButton: CustomAppBarLeftButtons.back,
-      title: translate?.notification ?? "Notification",
+      title: translate?.address ?? "Address",
       body: const Center(
-        child: Text("NotificationsScreen"),
+        child: Text("AddressScreen"),
       ),
     );
   }

@@ -18,6 +18,8 @@ class BestSeller extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final favouriteProvider = Provider.of<FavouriteProvider>(context);
+    final colorScheme = context.theme.colorScheme;
+    final translate = context.translate;
 
     return SizedBox(
       height: 305,
@@ -42,10 +44,10 @@ class BestSeller extends StatelessWidget {
                 Ink(
                   width: 280,
                   decoration: BoxDecoration(
-                    color: AppColors.white,
+                    color: colorScheme.surface,
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
-                      BoxShadow(color: AppColors.shadowColor, blurRadius: 4)
+                      BoxShadow(color: colorScheme.shadow, blurRadius: 4)
                     ],
                   ),
                   child: Column(
@@ -108,15 +110,16 @@ class BestSeller extends StatelessWidget {
                                 ),
                                 const Spacer(),
                                 item.outOfStock
-                                    ? const Text(
-                                        "Out of Stock",
-                                        style: TextStyle(
+                                    ? Text(
+                                        translate?.outOfStock ?? "Out of Stock",
+                                        style: const TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w500,
                                             color: AppColors.red),
                                       )
                                     : PrimaryButton(
-                                        text: "ADD", onPressed: () {}),
+                                        text: translate?.add ?? "ADD",
+                                        onPressed: () {}),
                               ],
                             ),
                           ],
@@ -130,7 +133,7 @@ class BestSeller extends StatelessWidget {
                     width: 280,
                     height: 305,
                     decoration: BoxDecoration(
-                      color: AppColors.black.withOpacity(0.25),
+                      color: colorScheme.shadow.withOpacity(0.25),
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
@@ -139,7 +142,8 @@ class BestSeller extends StatelessWidget {
                   top: 0,
                   child: IconButton(
                       onPressed: () {
-                        favouriteProvider.addORRemoveFavouriteDishes(item: item);
+                        favouriteProvider.addORRemoveFavouriteDishes(
+                            item: item);
                       },
                       icon: Icon(
                         favouriteProvider.favouriteDishes.contains(item)

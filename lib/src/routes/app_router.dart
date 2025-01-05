@@ -39,6 +39,13 @@ class AppRouter {
       //   },
       // ),
       GoRoute(
+        name: RoutesName.address,
+        path: RoutesName.address,
+        builder: (BuildContext context, GoRouterState state) {
+          return const AddressScreen();
+        },
+      ),
+      GoRoute(
         name: RoutesName.dishDetails,
         path: RoutesName.dishDetails,
         builder: (BuildContext context, GoRouterState state) {
@@ -81,6 +88,13 @@ class AppRouter {
         path: RoutesName.notifications,
         builder: (BuildContext context, GoRouterState state) {
           return const NotificationsScreen();
+        },
+      ),
+      GoRoute(
+        name: RoutesName.order,
+        path: RoutesName.order,
+        builder: (BuildContext context, GoRouterState state) {
+          return const OrderScreen();
         },
       ),
       GoRoute(

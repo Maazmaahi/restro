@@ -15,10 +15,12 @@ import '../routes/routes.dart';
 part 'components/explore_menu.dart';
 part 'components/horizontal_food_card.dart';
 
+part 'app_bottom_sheet.dart';
 part 'app_divider.dart';
 part 'app_loader.dart';
 part 'app_network_image.dart';
 part 'app_pull_refresh.dart';
+part 'app_scaffold.dart';
 part 'app_text_form_field.dart';
 part 'custom_app_bar.dart';
 part 'outlined_button.dart';

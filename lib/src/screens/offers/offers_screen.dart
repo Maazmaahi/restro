@@ -31,72 +31,65 @@ class _OfferScreenState extends State<OfferScreen> {
   @override
   Widget build(BuildContext context) {
     offerProvider = Provider.of<OfferProvider>(context);
+    final colorScheme = context.theme.colorScheme;
+    final translate = context.translate;
 
-    return SafeArea(
-      child: Scaffold(
-        appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(50),
-          child: CustomAppBar(
-            leftButton: CustomAppBarLeftButtons.appLogo,
-            title: "Offers",
-          ),
-        ),
-        body: offerProvider.offers.isEmpty
-            ? const AppLoader()
-            : ListView.separated(
-                itemCount: offerProvider.offers.length,
-                padding: const EdgeInsets.all(20),
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 10),
-                itemBuilder: (context, index) {
-                  final item = offerProvider.offers[index];
+    return AppScaffold(
+      leftButton: CustomAppBarLeftButtons.appLogo,
+      title: translate?.offers ?? "Offers",
+      body: offerProvider.offers.isEmpty
+          ? const AppLoader()
+          : ListView.separated(
+              itemCount: offerProvider.offers.length,
+              padding: const EdgeInsets.all(20),
+              separatorBuilder: (context, index) => const SizedBox(height: 10),
+              itemBuilder: (context, index) {
+                final item = offerProvider.offers[index];
 
-                  return Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(5),
-                      boxShadow: [
-                        BoxShadow(color: AppColors.shadowColor, blurRadius: 4)
-                      ],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        DecoratedBox(
-                          decoration: BoxDecoration(
-                              border: Border.all(color: AppColors.red),
-                              borderRadius: BorderRadius.circular(4)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              item.coupon,
-                              style: const TextStyle(
-                                color: AppColors.red,
-                              ),
+                return Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: colorScheme.surface,
+                    borderRadius: BorderRadius.circular(5),
+                    boxShadow: [
+                      BoxShadow(color: colorScheme.shadow, blurRadius: 4)
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      DecoratedBox(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: AppColors.red),
+                            borderRadius: BorderRadius.circular(4)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            item.coupon,
+                            style: const TextStyle(
+                              color: AppColors.red,
                             ),
                           ),
                         ),
-                        const SizedBox(height: 8),
-                        Text(
-                          item.title,
-                          style: const TextStyle(
-                            color: AppColors.lightBlue,
-                            fontSize: 20,
-                          ),
-                          maxLines: 2,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        item.title,
+                        style: const TextStyle(
+                          color: AppColors.lightBlue,
+                          fontSize: 20,
                         ),
-                        const SizedBox(height: 8),
-                        Text(item.description, maxLines: 2),
-                        const AppDivider(),
-                        Text(item.dateOfExpiry
-                            .toStringByFormat("dd MMM, yyyy")),
-                      ],
-                    ),
-                  );
-                },
-              ),
-      ),
+                        maxLines: 2,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(item.description, maxLines: 2),
+                      const AppDivider(),
+                      Text(item.dateOfExpiry.toStringByFormat("dd MMM, yyyy")),
+                    ],
+                  ),
+                );
+              },
+            ),
     );
   }
 }

@@ -5,5 +5,7 @@ import 'package:restro/src/cores/cores.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocalStorageManager.init();
-  runApp(const MyApp());
+  final appLanguage = LocalStorageManager.getString(LocalStorageManager.appLanguage);
+  final themeMode = LocalStorageManager.getString(LocalStorageManager.themeMode);
+  runApp(MyApp());
 }
