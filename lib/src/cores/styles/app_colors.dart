@@ -14,6 +14,7 @@ class AppColors {
   static const lightSky = Color(0xFF87CEFA);
   static const steelBlue = Color(0xFF4682B4);
   static const lightTeal = Color(0xFF5F9EA0);
+  static const webPrimary = Color(0xFFED7A00);
   static const teal = Colors.teal;
   static Color lightBackGroundColor = Colors.white;
   static Color darkBackGroundColor = Colors.black;

@@ -109,17 +109,10 @@ class BestSeller extends StatelessWidget {
                                       fontWeight: FontWeight.w500),
                                 ),
                                 const Spacer(),
-                                item.outOfStock
-                                    ? Text(
-                                        translate?.outOfStock ?? "Out of Stock",
-                                        style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500,
-                                            color: AppColors.red),
-                                      )
-                                    : PrimaryButton(
-                                        text: translate?.add ?? "ADD",
-                                        onPressed: () {}),
+                                CartButton(
+                                  dish: item,
+                                  label: translate?.add.toUpperCase() ?? "ADD",
+                                ),
                               ],
                             ),
                           ],

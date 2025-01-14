@@ -35,5 +35,19 @@
   "savedAddress": "सहेजा गया पता",
   "logout": "लॉग आउट",
   "changeTheme": "विषय बदलें",
-  "changeLanguage": "भाषा बदलें"
+  "changeLanguage": "भाषा बदलें",
+  "addToCart": "कार्ट में जोड़ें",
+  "clearCart": "कार्ट को खाली करें",
+  "item": "वस्तु",
+  "optInForZeroContactDelivery": "शून्य संपर्क डिलीवरी के लिए ऑप्ट इन करें",
+  "ourDeliveryPartnerWillLeaveTheOrderAtYourDoorGate": "हमारा डिलीवरी पार्टनर आपके दरवाजे/द्वार पर ऑर्डर छोड़ देगा",
+  "billingDetails": "बिलिंग विवरण",
+  "itemTotal": "वस्तु का कुल",
+  "deliveryCharges": "वितरण शुल्क",
+  "packingCharges": "पैकिंग शुल्क",
+  "netTotal": "शुद्ध योग",
+  "taxes": "करों",
+  "grandTotal": "कुल योग",
+  "totalBillAmount": "कुल बिल राशि",
+  "placeOrder": "आदेश देना"
 }

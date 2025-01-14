@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:restro/src/cores/cores.dart';
-import 'package:restro/src/routes/routes.dart';
+import 'package:provider/provider.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../cores/cores.dart';
+import '../../providers/providers.dart';
+import '../../routes/routes.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({
@@ -67,10 +68,14 @@ class DashboardScreen extends StatelessWidget {
                 label: translate?.offer ?? "Offers",
               ),
               NavigationDestination(
-                icon: Icon(Icons.shopping_cart_outlined,
-                    color: colorScheme.onSurface),
-                selectedIcon:
-                    Icon(Icons.shopping_cart, color: colorScheme.onSurface),
+                icon: _buildCartNumberIcon(
+                  icon: Icons.shopping_cart_outlined,
+                  colorScheme: colorScheme,
+                ),
+                selectedIcon: _buildCartNumberIcon(
+                  icon: Icons.shopping_cart,
+                  colorScheme: colorScheme,
+                ),
                 label: translate?.cart ?? "Cart",
               ),
               NavigationDestination(
@@ -83,6 +88,37 @@ class DashboardScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildCartNumberIcon({
+    required ColorScheme colorScheme,
+    required IconData icon,
+  }) {
+    return Consumer<CartProvider>(builder: (context, cartProvider, child) {
+      return Stack(
+        children: [
+          Icon(icon, color: colorScheme.onSurface),
+          if (cartProvider.dishes.isNotEmpty)
+            Positioned(
+              top: 0,
+              right: 0,
+              child: Container(
+                height: 16,
+                width: 16,
+                decoration: BoxDecoration(
+                  color: AppColors.red,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  "${cartProvider.totalQuantity}",
+                  style: const TextStyle(fontSize: 11, color: AppColors.white),
+                ),
+              ),
+            ),
+        ],
+      );
+    });
   }
 
   static int _calculateSelectedIndex(BuildContext context) {

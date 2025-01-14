@@ -24,14 +24,14 @@ class DishDetailsScreen extends StatelessWidget {
     final homeProvider = Provider.of<HomeProvider>(context);
     final favouriteProvider = Provider.of<FavouriteProvider>(context);
     final colorScheme = context.theme.colorScheme;
+    final translate = context.translate;
 
     return AppScaffold(
       leftButton: CustomAppBarLeftButtons.back,
       actions: [
         IconButton(
             onPressed: () {
-              favouriteProvider.addORRemoveFavouriteDishes(
-                  item: dish);
+              favouriteProvider.addORRemoveFavouriteDishes(item: dish);
             },
             icon: Icon(
               favouriteProvider.favouriteDishes.contains(dish)
@@ -48,16 +48,21 @@ class DishDetailsScreen extends StatelessWidget {
             SizedBox(
               height: 200,
               width: context.screenWidth,
-              child: CachedNetworkImage(
-                imageUrl: dish.imagePath,
-                errorWidget: (context, url, error) => const SizedBox(),
-                imageBuilder: (context, assetProvider) {
-                  return FadeInImage(
-                    placeholder: MemoryImage(kTransparentImage),
-                    image: assetProvider,
-                    fit: BoxFit.cover,
-                  );
+              child: GestureDetector(
+                onTap: () {
+                  context.push(RoutesName.picture, extra: dish.imagePath);
                 },
+                child: CachedNetworkImage(
+                  imageUrl: dish.imagePath,
+                  errorWidget: (context, url, error) => const SizedBox(),
+                  imageBuilder: (context, assetProvider) {
+                    return FadeInImage(
+                      placeholder: MemoryImage(kTransparentImage),
+                      image: assetProvider,
+                      fit: BoxFit.cover,
+                    );
+                  },
+                ),
               ),
             ),
             Padding(
@@ -98,20 +103,11 @@ class DishDetailsScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      dish.outOfStock
-                          ? const Text(
-                              "Out of Stock",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.red),
-                            )
-                          : Expanded(
-                              child: PrimaryButton(
-                                text: "+ Add to cart",
-                                onPressed: () {},
-                              ),
-                            ),
+                      CartButton(
+                        dish: dish,
+                        label: "+ ${translate?.addToCart ?? "Add to cart"}",
+                        minimumSize: Size(context.screenWidth - 40, 40),
+                      ),
                     ],
                   ),
                   const AppDivider(),
@@ -268,8 +264,8 @@ class DishDetailsScreen extends StatelessWidget {
                                         width: 180,
                                         height: 248,
                                         decoration: BoxDecoration(
-                                          color:
-                                              colorScheme.shadow.withOpacity(0.25),
+                                          color: colorScheme.shadow
+                                              .withOpacity(0.25),
                                           borderRadius:
                                               BorderRadius.circular(5),
                                         ),

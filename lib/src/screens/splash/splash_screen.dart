@@ -35,11 +35,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     authProvider = Provider.of<AuthProvider>(context);
-    final translate = context.translate;
 
-    return AppScaffold(
-      body: Center(
-        child: Text(translate?.biryaniMahal ?? "Biryani Mahal"),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: context.theme.colorScheme.primary,
+        body: Center(
+          child: Image.asset(
+            Assets.images.biryaniMahalLogo,
+            height: 100,
+            width: 100,
+          ),
+        ),
       ),
     );
   }

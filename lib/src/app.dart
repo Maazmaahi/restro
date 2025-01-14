@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +12,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: AppColors.primary,
+      statusBarIconBrightness: Brightness.light,
+      systemNavigationBarColor: AppColors.primary,
+      systemNavigationBarIconBrightness: Brightness.light,
+      systemNavigationBarDividerColor: AppColors.primary,
+    ));
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -51,6 +60,7 @@ class MyApp extends StatelessWidget {
           supportedLocales: const [
             Locale('en'), // English
             Locale('hi'), // Hindi
+            Locale('ur'), // Urdu
           ],
           locale: authProvider.locale,
           theme: AppTheme.lightTheme,

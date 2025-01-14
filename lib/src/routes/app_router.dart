@@ -104,7 +104,14 @@ class AppRouter {
           return const OtpScreen();
         },
       ),
-
+      GoRoute(
+        name: RoutesName.picture,
+        path: RoutesName.picture,
+        builder: (BuildContext context, GoRouterState state) {
+          final String imagePath = state.extra! as String;
+          return PictureScreen(imagePath: imagePath);
+        },
+      ),
       GoRoute(
         name: RoutesName.register,
         path: RoutesName.register,

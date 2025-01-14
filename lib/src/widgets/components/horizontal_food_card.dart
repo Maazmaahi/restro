@@ -3,13 +3,21 @@ part of '../widgets.dart';
 class HorizontalFoodCard extends StatelessWidget {
   final DishModel item;
   final void Function()? onTap;
+  final bool isCartScreen;
 
-  const HorizontalFoodCard({super.key, required this.item, this.onTap});
+  const HorizontalFoodCard({
+    super.key,
+    required this.item,
+    this.onTap,
+    this.isCartScreen = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     final favouriteProvider = Provider.of<FavouriteProvider>(context);
     final colorScheme = context.theme.colorScheme;
+    final translate = context.translate;
+
     return InkWell(
       onTap: onTap,
       child: Stack(
@@ -48,21 +56,23 @@ class HorizontalFoodCard extends StatelessWidget {
                           },
                         ),
                       ),
-                      Positioned(
-                        right: 4,
-                        top: 4,
-                        child: InkWell(
-                            onTap: () {
-                              favouriteProvider.addORRemoveFavouriteDishes(item: item);
-                            },
-                            child: Icon(
-                              favouriteProvider.favouriteDishes.contains(item)
-                                  ? Icons.favorite
-                                  : Icons.favorite_border_outlined,
-                              color: colorScheme.primary,
-                              size: 20,
-                            )),
-                      ),
+                      if (!isCartScreen)
+                        Positioned(
+                          right: 4,
+                          top: 4,
+                          child: InkWell(
+                              onTap: () {
+                                favouriteProvider.addORRemoveFavouriteDishes(
+                                    item: item);
+                              },
+                              child: Icon(
+                                favouriteProvider.favouriteDishes.contains(item)
+                                    ? Icons.favorite
+                                    : Icons.favorite_border_outlined,
+                                color: colorScheme.primary,
+                                size: 20,
+                              )),
+                        ),
                     ],
                   ),
                   Expanded(
@@ -88,13 +98,14 @@ class HorizontalFoodCard extends StatelessWidget {
                                       : const VegIndicator(),
                                 ],
                               ),
-                              Text(
-                                item.description,
-                                style: TextStyle(
-                                    fontSize: 12, color: AppColors.grey[500]),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
+                              if (!isCartScreen)
+                                Text(
+                                  item.description,
+                                  style: TextStyle(
+                                      fontSize: 12, color: AppColors.grey[500]),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                             ],
                           ),
                           Row(
@@ -105,20 +116,11 @@ class HorizontalFoodCard extends StatelessWidget {
                                 style: const TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.w500),
                               ),
-                              // const Spacer(),
-                              item.outOfStock
-                                  ? const Text(
-                                      "Out of Stock",
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColors.red),
-                                    )
-                                  : PrimaryButton(
-                                      text: "ADD",
-                                      onPressed: () {},
-                                      minimumSize: const Size(80, 35),
-                                    ),
+                              CartButton(
+                                dish: item,
+                                label: translate?.add.toUpperCase() ?? "ADD",
+                                minimumSize: const Size(80, 35),
+                              ),
                             ],
                           ),
                         ],

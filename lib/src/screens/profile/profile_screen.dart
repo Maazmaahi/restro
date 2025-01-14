@@ -31,12 +31,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            SizedBox(
-              height: 200,
-              width: context.screenWidth,
-              child: Image.asset(
-                Assets.images.biryaniMahalBanner,
-                fit: BoxFit.cover,
+            GestureDetector(
+              onTap: () {
+                context.push(RoutesName.picture,
+                    extra: Assets.images.biryaniMahalBanner);
+              },
+              child: SizedBox(
+                height: 200,
+                width: context.screenWidth,
+                child: Image.asset(
+                  Assets.images.biryaniMahalBanner,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             const SizedBox(height: 10),
@@ -241,10 +247,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                 ),
-                const FaIcon(
-                  FontAwesomeIcons.chevronRight,
-                  size: 24,
-                ),
+                Consumer<AuthProvider>(builder: (context, authProvider, child) {
+                  return FaIcon(
+                    authProvider.locale.languageCode == "ur"
+                        ? FontAwesomeIcons.chevronLeft
+                        : FontAwesomeIcons.chevronRight,
+                    size: 24,
+                  );
+                }),
               ],
             ),
           ),

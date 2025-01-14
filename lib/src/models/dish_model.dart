@@ -2,6 +2,7 @@ part of 'models.dart';
 
 class DishModel {
   final int id;
+  int orderedQuantity;
   final String name;
   final String slug;
   final String imagePath;
@@ -14,6 +15,7 @@ class DishModel {
 
   DishModel({
     required this.id,
+    this.orderedQuantity = 0,
     required this.name,
     required this.slug,
     required this.imagePath,
@@ -28,6 +30,7 @@ class DishModel {
   factory DishModel.fromJson(Map<String, dynamic> json) {
     return DishModel(
       id: int.tryParse(json["id"].toString()) ?? 0,
+      orderedQuantity: int.tryParse(json["orderedQuantity"].toString()) ?? 0,
       name: json["name"],
       slug: json["slug"],
       imagePath: json["imagePath"],
@@ -42,6 +45,7 @@ class DishModel {
 
   Map<String, dynamic> toJson() => {
     "id": id,
+    "orderedQuantity": orderedQuantity,
     "name": name,
     "slug": slug,
     "imagePath": imagePath,

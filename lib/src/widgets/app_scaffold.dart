@@ -5,12 +5,16 @@ class AppScaffold extends StatelessWidget {
   final String? title;
   final CustomAppBarLeftButtons leftButton;
   final List<Widget>? actions;
+  final Color? backgroundColor;
+  final Widget? bottom;
 
   const AppScaffold({
     super.key,
     this.body,
     this.title,
     this.actions,
+    this.backgroundColor,
+    this.bottom,
     this.leftButton = CustomAppBarLeftButtons.none,
   });
 
@@ -18,6 +22,7 @@ class AppScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: backgroundColor,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(50),
           child: CustomAppBar(
@@ -29,6 +34,7 @@ class AppScaffold extends StatelessWidget {
           ),
         ),
         body: body,
+        bottomNavigationBar: bottom,
       ),
     );
   }

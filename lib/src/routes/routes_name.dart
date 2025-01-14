@@ -14,6 +14,7 @@ class RoutesName {
   static const String offer = '/offer';
   static const String order = '/order';
   static const String otp = '/otp';
+  static const String picture = '/picture';
   static const String profile = '/profile';
   static const String register = '/register';
   static const String search = '/search';

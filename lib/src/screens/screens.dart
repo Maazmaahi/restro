@@ -11,6 +11,7 @@ export 'notifications/notifications_screen.dart';
 export 'offers/offers_screen.dart';
 export 'order/order_screen.dart';
 export 'otp/otp_screen.dart';
+export 'picture/picture_screen.dart';
 export 'profile/profile_screen.dart';
 export 'register/register_screen.dart';
 export 'search/search_screen.dart';

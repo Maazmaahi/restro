@@ -35,5 +35,19 @@
   "savedAddress": "Saved Address",
   "logout": "Logout",
   "changeTheme": "Change Theme",
-  "changeLanguage": "Change Language"
+  "changeLanguage": "Change Language",
+  "addToCart": "Add to cart",
+  "clearCart": "Clear Cart",
+  "item": "Item",
+  "optInForZeroContactDelivery": "Opt in for Zero Contact Delivery",
+  "ourDeliveryPartnerWillLeaveTheOrderAtYourDoorGate": "Our delivery partner will leave the order at your door/gate",
+  "billingDetails": "Billing Details",
+  "itemTotal": "Item Total",
+  "deliveryCharges": "Delivery Charges",
+  "packingCharges": "Packing Charges",
+  "netTotal": "Net Total",
+  "taxes": "Taxes",
+  "grandTotal": "Grand Total",
+  "totalBillAmount": "Total Bill Amount",
+  "placeOrder": "Place Order"
 }

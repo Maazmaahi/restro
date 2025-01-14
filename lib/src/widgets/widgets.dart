@@ -12,6 +12,7 @@ import '../models/models.dart';
 import '../providers/providers.dart';
 import '../routes/routes.dart';
 
+part 'components/cart_button.dart';
 part 'components/explore_menu.dart';
 part 'components/horizontal_food_card.dart';
 
